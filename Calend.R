@@ -1,5 +1,6 @@
 makeXlsCalendar <- function(year
-                            , path2zip = "C:/Options/R/Rtools/bin/zip.exe") {
+                           # , path2zip = "C:/Options/R/Rtools/bin/zip.exe" # this is needed in case zip is not found on a PC
+                           ) {
   ## The functions creates and excel file with a simple year calendar by 3 months in a row
   
   ## openxlsx package is used to manipulate excel file
@@ -104,7 +105,7 @@ makeXlsCalendar <- function(year
   tmp <- sapply(1:12, savexls)
   
   ## Saving the file
-  Sys.setenv("R_ZIPCMD" = path2zip)
+  # Sys.setenv("R_ZIPCMD" = path2zip) # this is needed in case zip is not found on a PC
   openxlsx::saveWorkbook(WorkBook
                          , sprintf("calendar%s.xlsx", year)
                          , overwrite = TRUE)
